@@ -1,13 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, FC } from 'react';
 import ReactDOM from 'react-dom';
 import Header from './Header';
 import Body from './Body';
 import Title from './Title';
 import Footer from './Footer';
 
-export const ModalContext = React.createContext();
+export const ModalContext = React.createContext({onHide: ()=>{}});
 
-const Modal = (props) => {
+export interface IModalProps {
+  /**shows the modal if true */
+  show: boolean,
+  /**function called when pressed X or when ESC key is pressed */
+  onHide: ()=>void
+}
+
+const Modal:FC<IModalProps> = (props) => {
   const { children, show, onHide } = props;
 
   if (show) {
@@ -40,7 +47,7 @@ const Modal = (props) => {
   }
 
   useEffect(() => {
-    const handleEsc = (e) => {
+    const handleEsc = (e:any) => {
       if (show) {
         if (e.keyCode === 27) {
           onHide();
@@ -67,9 +74,15 @@ const Modal = (props) => {
   );
 };
 
-Modal.Footer = Footer;
-Modal.Title = Title;
-Modal.Header = Header;
-Modal.Body = Body;
+// Modal.Footer = Footer;
+// Modal.Title = Title;
+// Modal.Header = Header;
+// Modal.Body = Body;
 
-export default Modal;
+// export default Modal;
+export default Object.assign(Modal, {
+  Body,
+  Header,
+  Title,
+  Footer
+});

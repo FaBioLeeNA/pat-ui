@@ -1,6 +1,6 @@
-import React from 'react';
+import React,{FC} from 'react';
 
-const Footer = ({ children }) => {
+const Footer:FC = ({ children }) => {
   return <div className="modal-footer">{children}</div>;
 };
 

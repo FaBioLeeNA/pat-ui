@@ -1,7 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useContext, FC } from 'react';
 import { ModalContext } from './Modal';
 
-const Header = (props) => {
+export interface IHeaderProps {
+  /**creates an X element if true */
+  closeButton?: boolean
+}
+
+const Header:FC<IHeaderProps> = (props) => {
   const { children, closeButton } = props;
   const { onHide } = useContext(ModalContext);
 

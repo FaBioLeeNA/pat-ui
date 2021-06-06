@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {FC} from 'react';
 
-const Body = ({ children }) => {
+const Body:FC = ({ children }) => {
   return <div className="modal-body">{children}</div>;
 };
 
