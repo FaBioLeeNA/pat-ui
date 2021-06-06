@@ -23,11 +23,14 @@ const Modal = (props) => {
         console.log('clicked');
       };
       let body = document.body;
-
+      //open-modal prevents scrolling on modal
+      body.classList.add('open-modal');
       body.appendChild(backdrop);
       body.appendChild(modal);
     }
   } else {
+    let body = document.body;
+    body.classList.remove('open-modal');
     let modal = document.getElementsByClassName('modal');
     let bd = document.getElementsByClassName('modal-backdrop');
     if (modal.length) {
